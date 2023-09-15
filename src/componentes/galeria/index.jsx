@@ -19,7 +19,7 @@ const ImagensContainer = styled.section`
 `
 
 
-export default function Galeria({fotos = []}) {
+export default function Galeria({fotos = [], aoFotoSelecionada}) {
     return(
         <>
             <Tags />
@@ -27,7 +27,7 @@ export default function Galeria({fotos = []}) {
                 <SecaoFluida>
                     <Titulo> Navegue por nossa galeria </Titulo>
                     <ImagensContainer>
-                        {fotos.map(foto => <Imagem key={foto.id} foto={foto} />)}
+                        {fotos.map(foto => <Imagem aoZoomSolicitado={aoFotoSelecionada} key={foto.id} foto={foto} />)}
                     </ImagensContainer>
                 </SecaoFluida>
                 <Populares />
