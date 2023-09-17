@@ -5,12 +5,14 @@ import Tags from "./tags";
 import Imagem from "./imagem";
 
 const GaleriaContainer = styled.div`
-   display: flex;
+    display: flex;
+    gap: 24px;
+`
 
-`
 const SecaoFluida = styled.section`
-   flex-grow: 1; 
+    flex-grow: 1;
 `
+
 const ImagensContainer = styled.section`
     display: flex;
     justify-content: space-between;
@@ -18,21 +20,26 @@ const ImagensContainer = styled.section`
     gap: 24px;
 `
 
-
-export default function Galeria({fotos = [], aoFotoSelecionada}) {
-    return(
+const Galeria = ({ fotos = [], setTag, aoFotoSelecionada, aoAlternarFavorito }) => {
+    return (
         <>
-            <Tags />
+            <Tags setTag={setTag}/>
             <GaleriaContainer>
                 <SecaoFluida>
-                    <Titulo> Navegue por nossa galeria </Titulo>
+                    <Titulo>Navegue pela galeria</Titulo>
                     <ImagensContainer>
-                        {fotos.map(foto => <Imagem aoZoomSolicitado={aoFotoSelecionada} key={foto.id} foto={foto} />)}
+                        {fotos.map(foto => <Imagem 
+                            aoZoomSolicitado={aoFotoSelecionada}
+                            aoAlternarFavorito={aoAlternarFavorito}
+                            key={foto.id} 
+                            foto={foto} />)
+                        }
                     </ImagensContainer>
                 </SecaoFluida>
                 <Populares />
-
             </GaleriaContainer>
         </>
     )
 }
+
+export default Galeria

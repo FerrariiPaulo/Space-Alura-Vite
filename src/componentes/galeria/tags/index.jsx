@@ -7,6 +7,13 @@ const TagTitulo = styled.h3`
     margin: 0;
 `
 
+const BarraTags = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    margin-top: 56px;
+`
+
 const TagEstilizada = styled.button`
     background: rgba(217, 217, 217, 0.3);
     border-radius: 10px;
@@ -28,13 +35,13 @@ const Div = styled.div`
     justify-content: end;
 `
 
-export default function Tags() {
+export default function Tags({setTag}) {
     return(
-        <>
+        <BarraTags>
             <TagTitulo>Busque por tags:</TagTitulo>
             <Div>
-                {tags.map(tag => <TagEstilizada key={tag.id}>{tag.titulo}</TagEstilizada>)}
+                {tags.map(tag => <TagEstilizada key={tag.id} onClick={()=> setTag(tag.tag)} >{tag.titulo}</TagEstilizada>)}
             </Div>
-        </>
+        </BarraTags>
     )
 }
